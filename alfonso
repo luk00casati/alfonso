@@ -447,6 +447,18 @@ open_file() {
     fi
 }
 
+show_image() {
+ if [[ -f $1 ]]; then
+        clear_screen
+        reset_terminal
+        chafa -c full "$1"
+        read -r -s -n 1 -p "$1"
+        clear_screen
+        setup_terminal
+        redraw
+    fi
+}
+
 cmd_line() {
     # Write to the command_line (under status_line).
     cmd_reply=
@@ -815,6 +827,11 @@ key() {
         #edit file.
         ${FFF_KEY_EDIT:=v})
             open_file "${list[scroll]}"
+        ;;
+
+        #show images in the terminal
+        ${FFF_KEY_IMG:=I})
+            show_image "${list[scroll]}"
         ;;
 
         # Refresh current dir.
