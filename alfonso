@@ -449,14 +449,9 @@ open_file() {
 
 show_image() {
  if [[ -f $1 ]]; then
-        clear_screen
-        reset_terminal
+        sxiv "$1"
         #chafa -c full "$1"
-        wezterm imgcat "$1"
-        read -r -s -n 1 -p "$1"
-        clear_screen
-        setup_terminal
-        redraw
+        #read -r -s -n 1 -p "$1"
     fi
 }
 
