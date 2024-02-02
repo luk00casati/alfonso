@@ -596,7 +596,7 @@ key() {
         # ('\e[D' or '\eOD').
         # '\177' and '\b' are what bash sometimes sees when the backspace
         # key is pressed.
-        ${FFF_KEY_PARENT1:=j}|\
+        ${FFF_KEY_PARENT1:=h}|\
         ${FFF_KEY_PARENT2:=$'\e[D'})
             # If a search was done, clear the results and open the current dir.
             if ((search == 1 && search_end_early != 1)); then
@@ -612,7 +612,7 @@ key() {
         # Scroll down.
         # 'B' is what bash sees when the down arrow is pressed
         # ('\e[B' or '\eOB').
-        ${FFF_KEY_SCROLL_DOWN1:=k}|\
+        ${FFF_KEY_SCROLL_DOWN1:=j}|\
         ${FFF_KEY_SCROLL_DOWN2:=$'\e[B'}|\
         ${FFF_KEY_SCROLL_DOWN3:=$'\eOB'})
             ((scroll < list_total)) && {
@@ -629,7 +629,7 @@ key() {
         # Scroll up.
         # 'A' is what bash sees when the up arrow is pressed
         # ('\e[A' or '\eOA').
-        ${FFF_KEY_SCROLL_UP1:=i}|\
+        ${FFF_KEY_SCROLL_UP1:=k}|\
         ${FFF_KEY_SCROLL_UP2:=$'\e[A'}|\
         ${FFF_KEY_SCROLL_UP3:=$'\eOA'})
             # '\e[1L': Insert a line above the cursor.
@@ -826,7 +826,7 @@ key() {
         ;;
 
         #show images in the terminal
-        ${FFF_KEY_IMG:=I})
+        ${FFF_KEY_IMG:=i})
             show_image "${list[scroll]}"
         ;;
 
