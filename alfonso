@@ -10,7 +10,7 @@ FFF_COL3=4
 FFF_COL2=3
 FFF_COL1=2
 FFF_MARK_FORMAT="> %f"
-FFF_TRASH="${HOME}/.trash"
+FFF_TRASH="${HOME}/trash"
 
 setup_terminal() {
     # Setup the terminal for the TUI.
@@ -406,24 +406,12 @@ mark() {
 trash() {
     # Trash a file.
 
-    if [[ $FFF_TRASH_CMD ]]; then
-        # Pass all but the last argument to the user's
-        # custom script. command is used to prevent this function
-        # from conflicting with commands named "trash".
-        command "$FFF_TRASH_CMD" "${@:1:$#-1}"
-
-    else
         cd "$FFF_TRASH" || cmd_line "error: Can't cd to trash directory."
 
-        if cp -alf "$@" &>/dev/null; then
-            rm -r "${@:1:$#-1}"
-        else
-            mv -f "$@"
-        fi
+        mv -f "$@" 
 
         # Go back to where we were.
         cd "$OLDPWD" ||:
-    fi
 }
 
 open_dir() {
@@ -731,10 +719,10 @@ key() {
                 clear_screen
                 reset_terminal
 
-                stty echo
-                printf '\e[1mfff\e[m: %s\n' "Running ${file_program[0]}"
+               # stty echo
+               # printf '\e[1mfff\e[m: %s\n' "Running ${file_program[0]}"
                 "${file_program[@]}" "${marked_files[@]}" .
-                stty -echo
+               # stty -echo
 
                 marked_files=()
                 setup_terminal
