@@ -3,7 +3,7 @@
 # alfonso a fork of fff
 
 #config
-EDITOR="nvim"
+EDITOR="helix"
 FFF_COL5=0
 FFF_COL4=3
 FFF_COL3=4
@@ -719,10 +719,10 @@ key() {
                 clear_screen
                 reset_terminal
 
-               # stty echo
+                stty echo
                # printf '\e[1mfff\e[m: %s\n' "Running ${file_program[0]}"
                 "${file_program[@]}" "${marked_files[@]}" .
-               # stty -echo
+                stty -echo
 
                 marked_files=()
                 setup_terminal
@@ -805,7 +805,7 @@ key() {
             open_dir ~
         ;;
 
-        # Go to trash. no
+       # Go to trash. no
 
         # Go to previous dir. no
         #edit file.
