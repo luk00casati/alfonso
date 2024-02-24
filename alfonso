@@ -3,7 +3,7 @@
 # alfonso a fork of fff
 
 #config
-EDITOR="helix"
+EDITOR="nvim"
 FFF_COL5=0
 FFF_COL4=3
 FFF_COL3=4
@@ -836,7 +836,7 @@ key() {
         # Don't allow user to redefine 'q' so a bad keybinding doesn't
         # remove the option to quit.
         q)
-            : "${FFF_CD_FILE:=${HOME}/.cache/alfonso/.alfonso_d}"
+            : "${FFF_CD_FILE:=${HOME}/.config/alfonso/where}"
 
             [[ -w $FFF_CD_FILE ]] &&
                 rm "$FFF_CD_FILE"
@@ -859,7 +859,7 @@ main() {
     cd "${2:-$1}" &>/dev/null ||:
 
     [[ $1 == -v ]] && {
-        printf '%s\n' "fff 2.2"
+        printf '%s\n' "alfonso 1.0"
         exit
     }
 
@@ -891,7 +891,7 @@ main() {
         shopt -s dotglob
 
     # Create the cache directory if they don't exist.
-    mkdir -p "${HOME}/.cache/alfonso"
+    # mkdir -p "${HOME}/.cache/alfonso"
 
     # 'nocaseglob': Glob case insensitively (Used for case insensitive search).
     # 'nullglob':   Don't expand non-matching globs to themselves.
